@@ -83,7 +83,13 @@ const Header = () => {
     const toggleDrawer = () => {
         setOpenDrawer(!openDrawer);
     };
-
+    const onConnectWallet = async (item) => {
+        setActivatingConnector(item.connector);
+        await activate(item.connector);
+    };
+    const onDeactiveWallet = () => {
+        deactivate();
+    };
     const updateTokenPrices = useCallback(async () => {
         try {
             let ids = null;
